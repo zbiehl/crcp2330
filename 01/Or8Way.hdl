@@ -13,5 +13,95 @@ CHIP Or8Way {
     OUT out;
 
     PARTS:
-    // Put your code here:
+	Or(a=in[0], b=in[1], out=out1);
+	Or(a=in[0], b=in[2], out=out2);
+	Or(a=in[0], b=in[3], out=out3);
+	Or(a=in[0], b=in[4], out=out4);
+	Or(a=in[0], b=in[5], out=out5);
+	Or(a=in[0], b=in[6], out=out6);
+	Or(a=in[0], b=in[7], out=out7);
+
+	Or(a=out1, b=out2, out=outA);
+	Or(a=out3, b=out4, out=outB);
+	Or(a=out5, b=out6, out=outC);
+	Or(a=out6, b=out7, out=outD);
+
+	Or(a=outA, b=outB, out=outTop1);
+	Or(a=outC, b=outD, out=outTop2);
+
+	Or(a=outTop1, b=outTop2, out=outTopA);
+
+
+
+	Or(a=in[1], b=in[2], out=out8);
+	Or(a=in[1], b=in[3], out=out9);
+	Or(a=in[1], b=in[4], out=out10);
+	Or(a=in[1], b=in[5], out=out11);
+	Or(a=in[0], b=in[6], out=out12);
+	Or(a=in[0], b=in[7], out=out13);
+
+	Or(a=out8, b=out9, out=outE);
+	Or(a=out10, b=out11, out=outF);
+	Or(a=out12, b=out13, out=outG);
+
+	Or(a=outE, b=outF, out=outTop3);
+
+	Or(a=outTop3, b=outG, out=outTopB);
+
+
+	Or(a=in[2], b=in[3], out=out14);
+	Or(a=in[2], b=in[4], out=out15);
+	Or(a=in[2], b=in[5], out=out16);
+	Or(a=in[2], b=in[6], out=out17);
+	Or(a=in[2], b=in[7], out=out18);
+
+	Or(a=out14, b=out15, out=outH);
+	Or(a=out16, b=out17, out=outI);
+	Or(a=out17, b=out18, out=outJ);
+
+	Or(a=outH, b=outI, out=outTop4);
+	Or(a=outI, b=outJ, out=outTop5);
+
+	Or(a=outTop4, b=outTop5, out=outTopC);
+
+
+
+	Or(a=in[3], b=in[4], out=out19);
+	Or(a=in[3], b=in[5], out=out20);
+	Or(a=in[3], b=in[6], out=out21);
+	Or(a=in[3], b=in[7], out=out22);
+
+	Or(a=out19, b=out20, out=outK);
+	Or(a=out21, b=out22, out=outL);
+
+	Or(a=outK, b=outL, out=outTopD);
+
+
+
+	Or(a=in[4], b=in[5], out=out23);
+	Or(a=in[4], b=in[6], out=out24);
+	Or(a=in[4], b=in[7], out=out25);
+
+	Or(a=out23, b=out24, out=outM);
+	Or(a=out23, b=out25, out=outN);
+
+	Or(a=outM, b=outN, out=outTopE);
+
+
+	Or(a=in[5], b=in[6], out=out26);
+	Or(a=in[5], b=in[7], out=out27);
+	Or(a=in[6], b=in[7], out=out28);
+
+	Or(a=out26, b=out27, out=outO);
+	Or(a=outO, b=out28, out=outTopF);
+
+	Or(a=outTopA, b=outTopB, out=outFinal1);
+	Or(a=outTopC, b=outTopD, out=outFinal2);
+	Or(a=outTopE, b=outTopF, out=outFinal3);
+
+	Or(a=outFinal1, b=outFinal2, out=outFin);
+
+	Or(a=outFin, b=outFinal3, out=out);
+
+
 }
