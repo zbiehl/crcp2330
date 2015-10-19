@@ -34,9 +34,11 @@
 	@R2
 	M=D+M
 
+	@1
+	D=A
 	@multOne
-	M=M-1
-
+	M=M-D
+	
 	@START
 	0;JMP
 
