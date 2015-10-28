@@ -21,11 +21,19 @@
  * memory map. The behavior in these addresses is described in the 
  * Screen and Keyboard chip specifications given in the book.
  */
-
 CHIP Memory {
     IN in[16], load, address[15];
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+	DMux4Way(in=load,sel=address[13..14],a=ram,b=ramR,c=screen,d=keyboard);
+
+	Or(a=ram,b=ramR,out=rR);
+	RAM16K(in=in,load=rR,address=address[0..13],out=r);
+	
+	Screen(in=in,load=screen,address=address[0..12],out=sC);
+	
+	Keyboard(out=key);
+
+	Mux4Way16(a=r,b=r,c=sC,d=key,sel=address[13..14],out=out);
 }
