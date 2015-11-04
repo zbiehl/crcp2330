@@ -39,5 +39,35 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    // Put your code here:
-}
+    // get type of instruction
+    Not(in=instruction[15], out=Ainstr);
+    Not(in=Ainstr, out=Cinstr);
+    
+    And(a=Cinstr, b=instruction[5], out=ALUa);    // C-inst and dest to A-reg?
+    Mux16(a=instruction, b=outALU, sel=ALUa, out=Aregin);
+    
+    Or(a=Ainstr, b=ALUa, out=loadA);    // load A if A-inst or C-inst&dest to A-reg
+    ARegister(in=Aregin, load=loadA, out=Aout);
+    
+    Mux16(a=Aout, b=inM, sel=instruction[12], out=AMout);   // select A or M based on a-bit
+
+    And(a=Cinstr, b=instruction[4], out=loadD);
+    DRegister(in=outALU, load=loadD, out=Dout);    // load the D register from ALU
+    
+    ALU(x=Dout, y=AMout, zx=instruction[11], nx=instruction[10], zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], out=outALU, zr=zOut, ng=NGout); 
+
+    Or16(a=false, b=Aout, out[0..14]=addressM);
+    Or16(a=false, b=outALU, out=outM);
+    And(a=Cinstr, b=instruction[3], out=writeM);
+    
+    And(a=zOut, b=instruction[1], out=jeq);    
+    And(a=NGout, b=instruction[2], out=jlt);   
+    Or(a=zOut, b=NGout, out=zOneg);
+    Not(in=zOneg, out=pos);            
+    And(a=pos, b=instruction[0], out=jgt); 
+    Or(a=jeq, b=jlt, out=jle);
+    Or(a=jle, b=jgt, out=jumpA);             
+    And(a=Cinstr, b=jumpA, out=loadPC); 
+    Not(in=loadPC, out=incPC);                  
+    PC(in=Aout, inc=incPC, load=loadPC, reset=reset, out[0..14]=pc);
+    }
