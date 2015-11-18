@@ -1,0 +1,29 @@
+class Target {
+	field int x, y;
+	field int size;
+
+	constructor Target new(int Bx, int By, int Bsize) {
+        let x = Bx;
+        let y = By;
+        let size = Bsize;
+
+        do draw();
+
+        return this;
+    }
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + size, y + size);
+        return;
+    }
+    method void erase() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + size, y + size);
+        return;
+    }
+
+}
