@@ -1,11 +1,11 @@
 class Target {
 	field int x, y;
-	field int size;
+	field int radius;
 
-	constructor Target new(int Bx, int By, int Bsize) {
+	constructor Target new(int Bx, int By, int Bradius) {
         let x = Bx;
         let y = By;
-        let size = Bsize;
+        let radius = Bradius;
 
         do draw();
 
@@ -17,12 +17,12 @@ class Target {
     }
     method void draw() {
         do Screen.setColor(true);
-        do Screen.drawRectangle(x, y, x + size, y + size);
+        do Screen.drawCircle(x, y, radius);
         return;
     }
     method void erase() {
         do Screen.setColor(false);
-        do Screen.drawRectangle(x, y, x + size, y + size);
+        do Screen.drawCircle(x, y, radius);
         return;
     }
 
