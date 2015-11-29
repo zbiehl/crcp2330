@@ -11,11 +11,10 @@ class Main {
     /** Initializes a new game and starts it. */    
     function void main() {
         var SquareGame game;
-        do Output.printString("Hello World");
-        do Output.println();
-        /*let game = SquareGame.new();
+        let game = SquareGame.new();
         do game.run();
-        do game.dispose();*/
+        do game.endCheck();
+        do game.dispose();
 
         return;
     }

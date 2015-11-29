@@ -27,6 +27,7 @@ class SquareGame {
         return this;
     }
 
+
     /** Deallocates the object's memory. */
     method void dispose() {
         do square.dispose();
@@ -99,4 +100,16 @@ class SquareGame {
         do Sys.wait(5); // Delays the next movement.
         return;
     }
-}
+
+    method void endCheck() {
+        if (((square.getX()+square.getSize()) = 256) & ((square.getY()+square.getSize()) = 128)) {
+            do square.erase();
+            do output.printString("GAME OVER");
+        }
+        if (((square.getX()-square.getSize()) = 256) & ((square.getY()-square.getSize()) = 128)){
+            do square.erase();
+            do output.printString("GAME OVER");
+        }
+        return; 
+    }
+}   

@@ -27,6 +27,18 @@ class Square {
         return this;
     }
 
+    method int getX(){
+    return x;
+    }
+
+    method int getY(){
+    return y;
+    }
+
+    method int getSize(){
+    return size;
+    }
+
     /** Deallocates the object's memory. */
     method void dispose() {
         do Memory.deAlloc(this);
@@ -37,7 +49,8 @@ class Square {
     method void draw() {
         do Screen.setColor(true);
         do Screen.drawRectangle(x, y, x + size, y + size);
-        return;
+        do Screen.drawCircle(256, 128, 5);
+        return;         
     }
 
     /** Erases the square from the screen. */
