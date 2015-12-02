@@ -48,7 +48,6 @@ class SquareGame {
             while (key = 0) {
                 let key = Keyboard.keyPressed();
                 do moveSquare();
-                //do endCheck();
             }
 
             if (key = 81) {
@@ -77,8 +76,6 @@ class SquareGame {
             while (~(key = 0)) {
                 let key = Keyboard.keyPressed();
                 do moveSquare();
-                //do endCheck();
-
             }
         }
             
@@ -102,20 +99,14 @@ class SquareGame {
 
         do Sys.wait(5); // Delays the next movement.
         do endCheck();
-       /* do Output.moveCursor(0, 0);
-        do Output.printInt(square.getX());
-        do Output.moveCursor(0, 20);
-        do Output.printInt(square.getY());
-       // do Output.moveCursor(0, 20);
-       // do Output.printInt(square.getSize());
-        */
+
         return;
     }
-
+    /** Checks for collision between the Square and target; prints a "Game Over" statement
+    and halts execution if true*/
     method void endCheck() {
         do Output.moveCursor(0, 0);
         do Output.printInt(square.getSize());
-        //do Output.printString("EndCheck");
         if (((square.getX()) < 306) & ((square.getX()) > 206) 
             & ((square.getY()) < 178) & ((square.getY()) > 78)) {
             do square.erase();
