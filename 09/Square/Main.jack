@@ -13,7 +13,6 @@ class Main {
         var SquareGame game;
         let game = SquareGame.new();
         do game.run();
-        do game.endCheck();
         do game.dispose();
 
         return;
