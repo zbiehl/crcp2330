@@ -1,3 +1,7 @@
 #! /usr/bin/env ruby
 
-puts "Hello Ruby!"
+puts "Hi, what's your name?"
+
+name = gets.chomp
+
+puts "hello #{name}, how are you?"
