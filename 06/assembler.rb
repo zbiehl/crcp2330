@@ -1,7 +1,10 @@
 #! /usr/bin/env ruby
 
-puts "Hi, what's your name?"
+if (ARGV[0] && ARGV[0].include?(".asm") && ARGV.length == 1 &&
+    File.exist?(ARGV[0]) && File.readable? (ARGV[0])
+    asm_filename = ARGV[0]
+    puts asm_filename
 
-name = gets.chomp
-
-puts "hello #{name}, how are you?"
+else
+  abort("Usage: ./assembler.rb Prog.asm")
+end
