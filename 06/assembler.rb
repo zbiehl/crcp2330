@@ -12,10 +12,12 @@ unless args_valid?
   abort("Usage: ./assembler.rb Prog.asm")
 end
 
+asm_filename = ARGV[0]
+
 unless isreadable?(asm_filename)
   abort("#{asm_filename} not found or is unreadable.")
 end
 
-file = File.open ("#{asm_filename}")
-contents = file.read
-puts contents
+puts "The contents of #{asm_filename}"
+asm_file = File.open(asm_filename)
+puts asm_file.read
