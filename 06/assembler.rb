@@ -1,10 +1,21 @@
 #! /usr/bin/env ruby
 
-if (ARGV[0] && ARGV[0].include?(".asm") && ARGV.length == 1 &&
-    File.exist?(ARGV[0]) && File.readable? (ARGV[0])
-    asm_filename = ARGV[0]
-    puts asm_filename
+def args_valid?
+  ARGV[0] && ARGV[0].include?(".asm") && ARGV.length == 1 
+end
 
-else
+def is_readable?(path)
+    File.readable?(path)
+end
+
+unless args_valid?
   abort("Usage: ./assembler.rb Prog.asm")
 end
+
+unless isreadable?(asm_filename)
+  abort("#{asm_filename} not found or is unreadable.")
+end
+
+file = File.open ("#{asm_filename}")
+contents = file.read
+puts contents
