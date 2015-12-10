@@ -1,5 +1,13 @@
 #! /usr/bin/env ruby
 
+class Assembler
+  
+  def initialize(asm_file, hack_file)
+    @asm_file = asm_file
+    
+end
+end
+
 def args_valid?
   ARGV[0] && ARGV[0].include?(".asm") && ARGV.length == 1 
 end
